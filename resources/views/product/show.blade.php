@@ -7,13 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Catálogo</a></li>
-            <li><a href="create.html">Registrar Producto</a></li>
-            <li><a href="show.html" class="active">Ver Producto</a></li>
-        </ul>
-    </nav>
+    @include('layout.navbar')
 
     <main class="container">
         <a href="index.html" class="back-button">← Volver al catálogo</a>
@@ -71,5 +65,6 @@
             </div>
         </div>
     </main>
+    @include('layout.footer')
 </body>
 </html>

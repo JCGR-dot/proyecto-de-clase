@@ -7,13 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Catálogo</a></li>
-            <li><a href="create.html" class="active">Registrar Producto</a></li>
-            <li><a href="show.html">Ver Producto</a></li>
-        </ul>
-    </nav>
+    @include('layout.navbar')
 
     <main class="container">
         <h1>Registrar Nuevo Producto</h1>
@@ -63,5 +57,6 @@
             </form>
         </div>
     </main>
+    @include('layout.footer')
 </body>
 </html>
