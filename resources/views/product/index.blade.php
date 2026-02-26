@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Productos</title>
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-</head>
-<body>
-    @include('layout.navbar')
-
-    <main class="container">
+@extends('layout.app')
+@section('content')
+<main class="container">
         <h1>Nuestros Productos</h1>
         
         <div class="product-grid">
@@ -88,7 +79,5 @@
                 </div>
             </div>
         </div>
-    </main>
-    @include('layout.footer')
-</body>
-</html>
+</main>
+@endsection
