@@ -4,13 +4,8 @@
         <h1>Registrar Nuevo Producto</h1>
         
         <div class="form-container">
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="id_producto">ID del Producto:</label>
-                    <input type="text" id="id_producto" name="id_producto" required 
-                           placeholder="Ej: PROD-001">
-                </div>
-
+            <form action="{{route('product.store')}}" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="nombre">Nombre del Producto:</label>
                     <input type="text" id="nombre" name="nombre" required 
@@ -26,11 +21,10 @@
 
                     <div class="form-group">
                         <label for="estado">Estado:</label>
-                        <select id="estado" name="estado" required>
-                            <option value="">Selecciona un estado</option>
-                            <option value="disponible">Disponible</option>
-                            <option value="limitado">Últimas unidades</option>
-                            <option value="agotado">Agotado</option>
+                        <select id="estado" name="category" required>
+                            @foreach($categoryList as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
