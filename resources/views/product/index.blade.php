@@ -7,7 +7,11 @@
             <!-- Producto 1 -->
             @foreach($misProductos as $product)
             <div class="product-card">
-                <div class="product-image">📱</div>
+                @if($product->image)
+                <img class="catalogImage" src="{{ asset('storage/'.$product->image) }}" alt="Imagen">
+                @else
+                <img class="catalogImage" src="" alt="Imagen por defecto">
+                @endif
                 <div class="product-info">
                     <h3>{{$product->name}}</h3>
                     <p class="product-description">{{$product->description}}</p>

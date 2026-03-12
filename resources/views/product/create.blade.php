@@ -35,6 +35,11 @@
                               placeholder="Describe las características del producto..."></textarea>
                 </div>
 
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input id="imagen" name="imagen" type="file" required accept="image/*">
+                </div>
+
                 <div class="form-actions">
                     <button type="submit" class="btn btn-submit">Registrar Producto</button>
                     <button type="reset" class="btn btn-cancel">Limpiar Formulario</button>

@@ -34,6 +34,11 @@ class ProductController extends Controller
         $newProduct->price = $request->get('precio');
         $newProduct->category_id = $request->get('category');
 
+        if($request->hasFile('imagen')){
+            $ruta = $request->file('imagen')->store('images','public');
+            $newProduct->image=$ruta;
+        }
+
         $newProduct->save();
         return redirect()->route('product.index');
     }
