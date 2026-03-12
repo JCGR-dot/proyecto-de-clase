@@ -10,7 +10,7 @@
                 @if($product->image)
                 <img class="catalogImage" src="{{ asset('storage/'.$product->image) }}" alt="Imagen">
                 @else
-                <img class="catalogImage" src="" alt="Imagen por defecto">
+                <img class="catalogImage" src="https://www.shutterstock.com/image-vector/defect-icon-element-design-600nw-2615276675.jpg" alt="Imagen por defecto">
                 @endif
                 <div class="product-info">
                     <h3>{{$product->name}}</h3>
