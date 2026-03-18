@@ -1,59 +1,57 @@
 @extends('layout.app')
+
 @section('content')
-    <main class="container">
-        <a href="index.html" class="back-button">← Volver al catálogo</a>
+<main class="container">
+    <a href="{{ route('product.index') }}" class="back-button">← Volver al catálogo</a>
+    
+    <div class="product-detail">
+        <div class="product-detail-header">
+            <h2>{{ $producto->name }}</h2>
+            <span class="badge badge-available">Disponible</span>
+        </div>
         
-        <div class="product-detail">
-            <div class="product-detail-header">
-                <h2>Smartphone X10</h2>
-                <span class="badge badge-available">Disponible</span>
+        <div class="product-detail-body">
+            @if($producto->image)
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <img src="{{ asset('storage/'.$producto->image) }}" alt="{{ $producto->name }}" style="max-width: 300px; border-radius: 0.5rem;">
             </div>
-            
-            <div class="product-detail-body">
-                <table class="specs-table">
-                    <tr>
-                        <td>ID del Producto:</td>
-                        <td><strong>PROD-001</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Nombre:</td>
-                        <td>Smartphone X10</td>
-                    </tr>
-                    <tr>
-                        <td>Estado:</td>
-                        <td>
-                            <span class="badge badge-available">Disponible</span>
-                        </td>
-                    </tr>
-                </table>
+            @endif
 
-                <div class="product-detail-description">
-                    <h3>Descripción del producto</h3>
-                    <p>
-                        El Smartphone X10 es un dispositivo de última generación que combina 
-                        potencia y elegancia. Cuenta con una pantalla OLED de 6.5 pulgadas con 
-                        resolución 4K, procesador de 8 núcleos, 8GB de RAM y 256GB de 
-                        almacenamiento interno. Su cámara triple de 48MP te permitirá capturar 
-                        momentos increíbles con calidad profesional.
-                    </p>
-                    <p style="margin-top: 1rem;">
-                        <strong>Características adicionales:</strong><br>
-                        • Batería de 5000mAh con carga rápida<br>
-                        • Resistencia al agua IP68<br>
-                        • Android 14 con actualizaciones garantizadas<br>
-                        • Desbloqueo facial y huella dactilar bajo pantalla
-                    </p>
-                </div>
+            <table class="specs-table">
+                <tr>
+                    <td>ID del Producto:</td>
+                    <td><strong>PROD-{{ str_pad($producto->id, 3, '0', STR_PAD_LEFT) }}</strong></td>
+                </tr>
+                <tr>
+                    <td>Nombre:</td>
+                    <td>{{ $producto->name }}</td>
+                </tr>
+                <tr>
+                    <td>Categoría:</td>
+                    <td>{{ $producto->category->name ?? 'Sin categoría' }}</td>
+                </tr>
+                <tr>
+                    <td>Estado:</td>
+                    <td>
+                        <span class="badge badge-available">Disponible</span>
+                    </td>
+                </tr>
+            </table>
 
-                <div class="product-detail-price">
-                    Precio: $599.99
-                </div>
+            <div class="product-detail-description">
+                <h3>Descripción del producto</h3>
+                <p>{{ $producto->description }}</p>
+            </div>
 
-                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                    <button class="btn btn-primary" style="flex: 1;">Comprar ahora</button>
-                    <button class="btn btn-outline" style="flex: 1;">Añadir al carrito</button>
-                </div>
+            <div class="product-detail-price">
+                Precio: ${{ number_format($producto->price, 2) }}
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button class="btn btn-primary" style="flex: 1;">Comprar ahora</button>
+                <button class="btn btn-outline" style="flex: 1;">Añadir al carrito</button>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 @endsection
