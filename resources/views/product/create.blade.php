@@ -4,7 +4,7 @@
         <h1>Registrar Nuevo Producto</h1>
         
         <div class="form-container">
-            <form action="{{route('product.store')}}" method="POST">
+            <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="nombre">Nombre del Producto:</label>
@@ -46,7 +46,7 @@
 
                 <div class="form-group">
                     <label for="imagen">Imagen</label>
-                    <input id="imagen" name="imagen" type="file"  accept="image/*">
+                    <input id="imagen" name="imagen" type="file"  accept="image/jpeg,image/png,image/jpg,image/gif">
                     @error('imagen')
                         <span style="color:red;font-size:14px">{{ $message }}</span>
                     @enderror

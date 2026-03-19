@@ -33,11 +33,11 @@ class ProductController extends Controller
             'nombre' => 'required|min:5|max:250',
             'precio' => 'required|numeric',
             'descripcion' => 'required',
-            'imagen' => 'required|image',
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif',
             'category' => 'required|exists:categories,id'
         ]);
 
-        //dd($request->all());
+        dd($request->all(), $request->file('imagen'), $request->hasFile('imagen'));
 
         $newProduct = new Product();
         $newProduct->name = $request->get('nombre');
@@ -56,6 +56,11 @@ class ProductController extends Controller
 
     public function show(Product $producto)
     {
-        return view('product.show', compact('producto'));
+        
+        $producto->load('category');
+        
+        return view('product.show', [
+            'producto' => $producto
+        ]);
     }
 }

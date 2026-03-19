@@ -4,7 +4,6 @@
         <h1>Nuestros Productos</h1>
         
         <div class="product-grid">
-            <!-- Producto 1 -->
             @foreach($misProductos as $product)
             <div class="product-card">
                 @if($product->image)
@@ -14,12 +13,12 @@
                 @endif
                 <div class="product-info">
                     <h3>{{$product->name}}</h3>
-                    <p class="product-description">{{$product->description}}</p>
-                    <p class="product-price">{{$product->price}}</p>
+                    <p class="product-description">{{ Str::limit($product->description, 60) }}</p>
+                    <p class="product-price">${{ number_format($product->price, 2) }}</p>
                     <span class="product-status status-available">Disponible</span>
                 </div>
                 <div class="product-actions">
-                    <a href="show.html?id=1" class="btn btn-primary">Ver detalles</a>
+                    <a href="{{ route('product.show', $product) }}" class="btn btn-primary">Ver detalles</a>
                     <button class="btn btn-outline">Comprar</button>
                 </div>
             </div>
