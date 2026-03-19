@@ -5,25 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class CartItem extends Model
+class CartSession extends Model
 {
     use HasFactory;
     
-    protected $table = 'cart_items';
+    protected $table = 'cart_sessions';
     
     protected $fillable = [
-        'user_id',
+        'session_id',
         'product_id',
         'quantity'
     ];
-    
-    /**
-     * Relación con el usuario
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
     
     /**
      * Relación con el producto

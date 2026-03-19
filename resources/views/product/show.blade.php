@@ -48,10 +48,6 @@
                         <span class="badge badge-available">Disponible</span>
                     </td>
                 </tr>
-                <tr>
-                    <td>Fecha de registro:</td>
-                    <td>{{ $producto->created_at->format('d/m/Y H:i') }}</td>
-                </tr>
             </table>
 
             <div class="product-detail-description">
@@ -59,10 +55,30 @@
                 <p>{{ $producto->description }}</p>
             </div>
 
-            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                <button class="btn btn-primary" style="flex: 1;">Comprar ahora</button>
-                <button class="btn btn-outline" style="flex: 1;">Añadir al carrito</button>
-            </div>
+            <!-- Formulario para agregar al carrito - SIN autenticación -->
+            <form action="{{ route('cart.add', $producto) }}" method="POST" style="margin-top: 2rem;">
+                @csrf
+                <div style="display: flex; gap: 1rem; align-items: center; background: var(--light-color); padding: 1.5rem; border-radius: 0.5rem;">
+                    <div style="flex: 1;">
+                        <label for="quantity" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Cantidad:</label>
+                        <input type="number" 
+                               id="quantity" 
+                               name="quantity" 
+                               value="1" 
+                               min="1" max="10"
+                               style="width: 100px; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 0.375rem;">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.75rem 2rem;">
+                        Agregar al Carrito
+                    </button>
+                </div>
+            </form>
+            
+            @if(session('success'))
+                <div style="background-color: #d1fae5; border: 1px solid #10b981; color: #065f46; padding: 1rem; border-radius: 0.375rem; margin-top: 1rem;">
+                    {{ session('success') }}
+                </div>
+            @endif
         </div>
     </div>
 </main>
